@@ -472,7 +472,7 @@ plugin_call_item (const struct plugin *p,
       else
 	ASSERT (0);
 
-      msg (D_PLUGIN, "PLUGIN_CALL: POST %s/%s status=%d",
+      dmsg (D_PLUGIN, "PLUGIN_CALL: POST %s/%s status=%d",
 	   p->so_pathname,
 	   plugin_type_name (type),
 	   status);
