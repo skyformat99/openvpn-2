@@ -101,6 +101,8 @@ plugin_type_name (const int type)
       return "PLUGIN_ENABLE_PF";
     case OPENVPN_PLUGIN_ROUTE_PREDOWN:
       return "PLUGIN_ROUTE_PREDOWN";
+	case OPENVPN_PLUGIN_COUNTER_REPORT:
+	  return "OPENVPN_PLUGIN_COUNTER_REPORT";
     default:
       return "PLUGIN_???";
     }

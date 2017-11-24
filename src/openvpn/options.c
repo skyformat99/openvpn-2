@@ -5144,6 +5144,12 @@ add_option (struct options *options,
       options->ce.socks_proxy_retry = true;
     }
 #endif
+  else if (streq (p[0], "counterreport") && p[1])
+    {
+      VERIFY_PERMISSION (OPT_P_GENERAL);
+	  //dmsg (M_DEBUG, "conterreport setting '%s,%s'", p[0],p[1]);
+      options->counterreport_time = atoi (p[1]);
+    }
   else if (streq (p[0], "keepalive") && p[1] && p[2])
     {
       VERIFY_PERMISSION (OPT_P_GENERAL);
@@ -6956,7 +6962,7 @@ add_option (struct options *options,
             }
         }
       if (file)
-	msg (msglevel, "Unrecognized option or missing parameter(s) in %s:%d: %s (%s)", file, line, p[0], PACKAGE_VERSION);
+	msg (msglevel, "Unrecognized option or missing parameter(s) in %s:%d: %s (%s)", file, line, p[0],PACKAGE_VERSION);
       else
 	msg (msglevel, "Unrecognized option or missing parameter(s): --%s (%s)", p[0], PACKAGE_VERSION);
     }

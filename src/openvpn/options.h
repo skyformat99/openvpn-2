@@ -247,6 +247,8 @@ struct options
 
   bool mlock;
 
+  int counterreport_time;	/*counter report every per seconds*/
+
   int keepalive_ping;           /* a proxy for ping/ping-restart */
   int keepalive_timeout;
 

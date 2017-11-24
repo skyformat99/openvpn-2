@@ -512,6 +512,27 @@ multi_client_disconnect_script (struct multi_context *m,
     }
 }
 
+void multi_client_counterreport_dowork(struct context *c)
+{
+	char *argv[1] = {0};
+
+	  if (c->options.counterreport_time
+	  && event_timeout_trigger (&c->c2.counterreport_interval,
+				&c->c2.timeval,
+				!TO_LINK_DEF(c) ? ETT_DEFAULT : 1)) {
+		/*update env counter*/
+		setenv_stats(c);
+		if(plugin_call(c->plugins,OPENVPN_PLUGIN_COUNTER_REPORT, NULL, NULL,c->c2.es)) {
+			dmsg (D_PLUGIN, "call plugin message failed!!");
+		} else {
+			dmsg (D_PLUGIN, "plugin message call success");
+		}
+	}
+
+	return ;
+}
+
+
 void
 multi_close_instance (struct multi_context *m,
 		      struct multi_instance *mi,

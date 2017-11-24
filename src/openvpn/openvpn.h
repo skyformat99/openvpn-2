@@ -295,8 +295,10 @@ struct context_2
    * Timer objects for ping and inactivity
    * timeout features.
    */
+   	
   struct event_timeout wait_for_connect;
   struct event_timeout ping_send_interval;
+  struct event_timeout counterreport_interval;
   struct event_timeout ping_rec_interval;
 
   /* --inactive */

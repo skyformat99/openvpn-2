@@ -562,6 +562,11 @@ process_coarse_timers (struct context *c)
 
   /* Should we ping the remote? */
   check_ping_send (c);
+
+  /*check counter reports*/
+  multi_client_counterreport_dowork(c);
+
+   
 }
 
 static void

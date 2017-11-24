@@ -1089,6 +1089,10 @@ do_init_timers (struct context *c, bool deferred)
   if (c->options.ping_send_timeout)
     event_timeout_init (&c->c2.ping_send_interval, c->options.ping_send_timeout, 0);
 
+  if (c->options.counterreport_time)
+    event_timeout_init (&c->c2.counterreport_interval, c->options.counterreport_time, now);
+
+
   if (c->options.ping_rec_timeout)
     event_timeout_init (&c->c2.ping_rec_interval, c->options.ping_rec_timeout, now);
 
